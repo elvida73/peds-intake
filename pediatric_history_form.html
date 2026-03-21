@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developmental History Form – Dr. Joseph F. Kulas, Ph.D., ABPP</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;font-size:14px;background:#f4f5f7;color:#1a1a2e}
+.wrapper{max-width:900px;margin:0 auto;background:#fff;box-shadow:0 2px 20px rgba(0,0,0,.12);padding-bottom:40px}
+.hdr{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;padding:20px 30px;border-bottom:2px solid #1a2744}
+.hdr-left,.hdr-right{font-size:12px;line-height:1.7}
+.hdr-right{text-align:right}
+.hdr-center{text-align:center}
+.hdr-center h1{font-size:20px;font-weight:700}
+.hdr-center p{font-size:12.5px;margin-top:4px;line-height:1.6}
+.form-title{text-align:center;font-size:16px;font-weight:700;text-decoration:underline;padding:10px 0;border-bottom:1px solid #ccc}
+.body{padding:20px 30px}
+.sec-title{font-size:13px;font-weight:700;background:#1a2744;color:#fff;padding:5px 10px;margin:20px 0 10px;letter-spacing:.05em;text-transform:uppercase}
+.row{display:flex;gap:20px;margin-bottom:10px;align-items:flex-end;flex-wrap:wrap}
+.f{display:flex;flex-direction:column;gap:3px;flex:1;min-width:120px}
+.f.w2{flex:2}.f.w3{flex:3}.f.full{flex:1 1 100%}
+.f label{font-size:11px;color:#555;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.f input[type=text],.f input[type=date],.f input[type=tel],.f select,.f textarea{border:none;border-bottom:1.5px solid #aaa;padding:4px 2px;font-family:Georgia,serif;font-size:13.5px;width:100%;background:transparent}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-bottom-color:#1a2744}
+.f textarea{resize:vertical;min-height:52px;border:1.5px solid #aaa;padding:5px;border-radius:2px}
+table{width:100%;border-collapse:collapse;margin-bottom:10px;font-size:13px}
+table th{background:#e8ecf5;border:1px solid #bbb;padding:6px 8px;text-align:left;font-size:11.5px;font-weight:700}
+table td{border:1px solid #bbb;padding:2px 3px}
+table td input{width:100%;border:none;padding:5px 6px;font-family:Georgia,serif;font-size:13px;background:transparent}
+table td input:focus{outline:1px solid #1a2744;border-radius:2px}
+.checks{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:8px;align-items:center}
+.checks label{display:flex;align-items:center;gap:5px;font-size:13.5px;cursor:pointer}
+.checks input[type=checkbox],.checks input[type=radio]{accent-color:#1a2744;width:14px;height:14px;cursor:pointer}
+.ck-prefix{font-size:13.5px;margin-right:4px}
+.yn{display:flex;align-items:flex-start;padding:6px 0;border-bottom:1px solid #f0f0f0;gap:10px;flex-wrap:wrap}
+.yn:last-child{border-bottom:none}
+.yn-q{flex:1;font-size:13.5px;min-width:200px}
+.yn-opts{display:flex;gap:14px;flex-shrink:0;align-items:center}
+.yn-opts label{display:flex;align-items:center;gap:4px;font-size:13.5px;cursor:pointer}
+.yn-detail{width:100%;margin-top:4px}
+.yn-detail input{width:100%;border:none;border-bottom:1px solid #aaa;font-family:Georgia,serif;font-size:13px;background:transparent;padding:2px 0}
+.yn-detail input:focus{outline:none;border-bottom-color:#1a2744}
+.tx-wrap{overflow-x:auto}
+.tx-table{width:100%;border-collapse:collapse;font-size:13px;min-width:550px}
+.tx-table th{background:#e8ecf5;border:1px solid #bbb;padding:6px 8px;text-align:center;font-size:11.5px}
+.tx-table .col-label{text-align:left;background:#f4f5f7;font-weight:700;font-size:12px;padding:5px 8px;border:1px solid #bbb;white-space:nowrap}
+.tx-table td{border:1px solid #bbb;padding:2px 3px}
+.tx-table td input{width:100%;border:none;padding:5px 6px;font-family:Georgia,serif;font-size:13px;background:transparent}
+.grade-grid{display:grid;grid-template-columns:140px 1fr;gap:0}
+.grade-grid .glabel{font-size:13px;font-weight:600;color:#444;padding:5px 8px;border-bottom:1px solid #f0f0f0;background:#fafbfd}
+.grade-grid .ginput{border-bottom:1px solid #f0f0f0;padding:2px 3px}
+.grade-grid .ginput input{width:100%;border:none;padding:4px 6px;font-family:Georgia,serif;font-size:13px;background:transparent}
+.grade-grid .ginput input:focus{outline:1px solid #1a2744;border-radius:2px}
+.fh-yn{display:flex;gap:12px}
+.fh-yn label{display:flex;align-items:center;gap:4px;cursor:pointer;font-size:13px}
+.beh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px 10px;margin-bottom:10px}
+.beh-grid label{display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer}
+.completion{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px;padding-top:16px;border-top:1px solid #ccc}
+.comp-field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.comp-field label{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#555;font-weight:700}
+.comp-field input{border:none;border-bottom:1.5px solid #aaa;padding:4px 2px;font-family:Georgia,serif;font-size:13.5px;background:transparent}
+.comp-field input:focus{outline:none;border-bottom-color:#1a2744}
+.submit-wrap{text-align:center;padding:30px}
+.submit-btn{background:#1a2744;color:#fff;border:none;padding:13px 50px;font-family:Georgia,serif;font-size:15px;font-weight:700;letter-spacing:.06em;cursor:pointer;border-radius:3px;transition:background .2s}
+.submit-btn:hover{background:#2c4a8c}
+#msg{margin-top:14px;font-size:13.5px;font-weight:700;min-height:20px}
+#msg.ok{color:#2e7d52}
+#msg.err{color:#c0392b}
+.note{font-size:12px;color:#666;margin-bottom:8px}
+.subsec{font-size:12px;font-weight:700;color:#1a2744;margin:10px 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.tdlabel{background:#fafbfd;font-weight:700;font-size:12.5px;padding:5px 8px!important}
+@media(max-width:600px){.hdr{grid-template-columns:1fr;text-align:center}.hdr-right{text-align:center}.completion{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<div class="hdr">
+  <div class="hdr-left">270 Farmington Avenue<br>Suite #344<br>Farmington, Connecticut<br>06032-1909</div>
+  <div class="hdr-center">
+    <h1>Joseph F. Kulas, Ph.D., ABPP</h1>
+    <p>Board Certified Clinical Neuropsychologist<br>Board Certified Subspecialist<br>Pediatric Neuropsychology</p>
+  </div>
+  <div class="hdr-right">Phone: (203) 805-8527<br>Fax: (888) 494-0373<br>JosephKulas.PhD@neuropsychologyct.org<br>www.neuropsychologyct.org</div>
+</div>
+<div class="form-title">Developmental History Form</div>
+
+<div class="body">
+<form id="form">
+
+<!-- CHILD INFO -->
+<div class="row" style="margin-top:14px">
+  <div class="f w3"><label>Child's Name</label><input type="text" name="child_name" required></div>
+  <div class="f"><label>Date of Birth</label><input type="date" name="child_dob"></div>
+</div>
+<div class="row">
+  <div class="f w3"><label>Address</label><input type="text" name="child_address"></div>
+  <div class="f"><label>Phone</label><input type="tel" name="child_phone"></div>
+</div>
+<div class="row">
+  <div class="f w3"><label>School</label><input type="text" name="child_school"></div>
+  <div class="f"><label>Grade</label><input type="text" name="child_grade"></div>
+</div>
+
+<!-- PARENTS -->
+<div class="sec-title">Parent's Information</div>
+<table>
+  <thead><tr><th colspan="2">Parent / Guardian 1</th><th colspan="2">Parent / Guardian 2</th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="tdlabel" style="width:90px">Name</td><td><input type="text" name="parent1_name"></td>
+      <td class="tdlabel" style="width:90px">Name</td><td><input type="text" name="parent2_name"></td>
+    </tr>
+    <tr>
+      <td class="tdlabel">Occupation</td><td><input type="text" name="parent1_occupation"></td>
+      <td class="tdlabel">Occupation</td><td><input type="text" name="parent2_occupation"></td>
+    </tr>
+    <tr>
+      <td class="tdlabel">Education</td><td><input type="text" name="parent1_education"></td>
+      <td class="tdlabel">Education</td><td><input type="text" name="parent2_education"></td>
+    </tr>
+  </tbody>
+</table>
+<div class="checks">
+  <span class="ck-prefix">This is your</span>
+  <label><input type="radio" name="child_type" value="Biological"> Biological</label>
+  <label><input type="radio" name="child_type" value="Adopted"> Adopted</label>
+  <label><input type="radio" name="child_type" value="Foster"> Foster child</label>
+</div>
+<div class="checks">
+  <span class="ck-prefix">Parents are</span>
+  <label><input type="radio" name="parent_status" value="Unmarried"> Unmarried</label>
+  <label><input type="radio" name="parent_status" value="Married"> Married</label>
+  <label><input type="radio" name="parent_status" value="Separated"> Separated</label>
+  <label><input type="radio" name="parent_status" value="Divorced"> Divorced</label>
+  <label><input type="radio" name="parent_status" value="Widowed/Widower"> Widowed/Widower</label>
+</div>
+<div class="yn">
+  <span class="yn-q">Are there significant family or marital conflicts?</span>
+  <div class="yn-opts">
+    <label><input type="radio" name="family_conflicts" value="No"> No</label>
+    <label><input type="radio" name="family_conflicts" value="Yes"> Yes</label>
+  </div>
+  <div class="yn-detail"><input type="text" name="family_conflicts_detail" placeholder="If yes, describe…"></div>
+</div>
+<div class="row" style="margin-top:8px">
+  <div class="f full"><label>Name of the child's legal guardian(s)</label><input type="text" name="legal_guardian"></div>
+</div>
+
+<!-- HOUSEHOLD -->
+<div class="sec-title">Household Members (reside with child)</div>
+<table>
+  <thead><tr><th>Full Name</th><th>Sex</th><th>Date of Birth</th><th>Age</th><th>Grade</th><th>Relationship</th></tr></thead>
+  <tbody>
+    <tr><td><input type="text" name="hh1_name"></td><td><input type="text" name="hh1_sex"></td><td><input type="text" name="hh1_dob"></td><td><input type="text" name="hh1_age"></td><td><input type="text" name="hh1_grade"></td><td><input type="text" name="hh1_rel"></td></tr>
+    <tr><td><input type="text" name="hh2_name"></td><td><input type="text" name="hh2_sex"></td><td><input type="text" name="hh2_dob"></td><td><input type="text" name="hh2_age"></td><td><input type="text" name="hh2_grade"></td><td><input type="text" name="hh2_rel"></td></tr>
+    <tr><td><input type="text" name="hh3_name"></td><td><input type="text" name="hh3_sex"></td><td><input type="text" name="hh3_dob"></td><td><input type="text" name="hh3_age"></td><td><input type="text" name="hh3_grade"></td><td><input type="text" name="hh3_rel"></td></tr>
+    <tr><td><input type="text" name="hh4_name"></td><td><input type="text" name="hh4_sex"></td><td><input type="text" name="hh4_dob"></td><td><input type="text" name="hh4_age"></td><td><input type="text" name="hh4_grade"></td><td><input type="text" name="hh4_rel"></td></tr>
+  </tbody>
+</table>
+
+<div class="sec-title">Other Immediate Family Members (do not reside with child)</div>
+<table>
+  <thead><tr><th>Full Name</th><th>Sex</th><th>Date of Birth</th><th>Age</th><th>Grade</th><th>Relationship</th></tr></thead>
+  <tbody>
+    <tr><td><input type="text" name="of1_name"></td><td><input type="text" name="of1_sex"></td><td><input type="text" name="of1_dob"></td><td><input type="text" name="of1_age"></td><td><input type="text" name="of1_grade"></td><td><input type="text" name="of1_rel"></td></tr>
+    <tr><td><input type="text" name="of2_name"></td><td><input type="text" name="of2_sex"></td><td><input type="text" name="of2_dob"></td><td><input type="text" name="of2_age"></td><td><input type="text" name="of2_grade"></td><td><input type="text" name="of2_rel"></td></tr>
+    <tr><td><input type="text" name="of3_name"></td><td><input type="text" name="of3_sex"></td><td><input type="text" name="of3_dob"></td><td><input type="text" name="of3_age"></td><td><input type="text" name="of3_grade"></td><td><input type="text" name="of3_rel"></td></tr>
+    <tr><td><input type="text" name="of4_name"></td><td><input type="text" name="of4_sex"></td><td><input type="text" name="of4_dob"></td><td><input type="text" name="of4_age"></td><td><input type="text" name="of4_grade"></td><td><input type="text" name="of4_rel"></td></tr>
+  </tbody>
+</table>
+
+<!-- REASON -->
+<div class="sec-title">Reason for Evaluation</div>
+<div class="f full"><label>Reason(s) you are requesting this evaluation</label><textarea name="reason_evaluation" rows="4"></textarea></div>
+
+<!-- HISTORY OF TREATMENT -->
+<div class="sec-title">History of Treatment: Therapies / Evaluations</div>
+<div class="tx-wrap">
+<table class="tx-table">
+  <thead>
+    <tr>
+      <th style="width:120px"></th>
+      <th>Psychology / Psychiatry</th>
+      <th>Occupational Therapy</th>
+      <th>Physical Therapy</th>
+      <th>Speech / Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="col-label">Treatment Date(s)</td><td><input type="text" name="tx_psych_dates"></td><td><input type="text" name="tx_ot_dates"></td><td><input type="text" name="tx_pt_dates"></td><td><input type="text" name="tx_sl_dates"></td></tr>
+    <tr><td class="col-label">Treatment Provider</td><td><input type="text" name="tx_psych_provider"></td><td><input type="text" name="tx_ot_provider"></td><td><input type="text" name="tx_pt_provider"></td><td><input type="text" name="tx_sl_provider"></td></tr>
+    <tr><td class="col-label">Evaluation Date(s)</td><td><input type="text" name="ev_psych_dates"></td><td><input type="text" name="ev_ot_dates"></td><td><input type="text" name="ev_pt_dates"></td><td><input type="text" name="ev_sl_dates"></td></tr>
+    <tr><td class="col-label">Evaluation Provider</td><td><input type="text" name="ev_psych_provider"></td><td><input type="text" name="ev_ot_provider"></td><td><input type="text" name="ev_pt_provider"></td><td><input type="text" name="ev_sl_provider"></td></tr>
+  </tbody>
+</table>
+</div>
+<div class="yn">
+  <span class="yn-q">Does your child receive special services at school?</span>
+  <div class="yn-opts">
+    <label><input type="radio" name="special_services" value="No"> No</label>
+    <label><input type="radio" name="special_services" value="Yes"> Yes</label>
+    <label><input type="checkbox" name="special_504" value="504"> 504</label>
+    <label><input type="checkbox" name="special_iep" value="IEP"> IEP</label>
+  </div>
+  <div class="yn-detail"><input type="text" name="special_exceptionality" placeholder="Exceptionality…"></div>
+</div>
+<div class="yn">
+  <span class="yn-q">Current medical diagnoses</span>
+  <div class="yn-opts"><label><input type="radio" name="med_dx" value="No"> No</label><label><input type="radio" name="med_dx" value="Yes"> Yes</label></div>
+  <div class="yn-detail"><input type="text" name="med_dx_detail" placeholder="If yes, describe…"></div>
+</div>
+<div class="yn">
+  <span class="yn-q">Current psychiatric diagnoses</span>
+  <div class="yn-opts"><label><input type="radio" name="psych_dx" value="No"> No</label><label><input type="radio" name="psych_dx" value="Yes"> Yes</label></div>
+  <div class="yn-detail"><input type="text" name="psych_dx_detail" placeholder="If yes, describe…"></div>
+</div>
+<div class="yn">
+  <span class="yn-q">Current speech diagnoses</span>
+  <div class="yn-opts"><label><input type="radio" name="speech_dx" value="No"> No</label><label><input type="radio" name="speech_dx" value="Yes"> Yes</label></div>
+  <div class="yn-detail"><input type="text" name="speech_dx_detail" placeholder="If yes, describe…"></div>
+</div>
+
+<!-- PREGNANCY -->
+<div class="sec-title">Pregnancy and Birth History</div>
+<div class="row"><div class="f"><label>1. Age of mother at delivery</label><input type="text" name="mother_age_delivery"></div></div>
+<div class="yn">
+  <span class="yn-q">2. Were there problems becoming pregnant?</span>
+  <div class="yn-opts"><label><input type="radio" name="preg_problems" value="No"> No</label><label><input type="radio" name="preg_problems" value="Yes"> Yes</label></div>
+</div>
+<div class="yn">
+  <span class="yn-q">3. Did mother receive regular prenatal care?</span>
+  <div class="yn-opts"><label><input type="radio" name="prenatal_care" value="No"> No</label><label><input type="radio" name="prenatal_care" value="Yes"> Yes</label></div>
+</div>
+<div class="subsec">4. Mother's health during pregnancy (check all that apply)</div>
+<div class="checks">
+  <label><input type="checkbox" name="preg_toxemia" value="1"> Toxemia</label>
+  <label><input type="checkbox" name="preg_rh" value="1"> RH incompatibility</label>
+  <label><input type="checkbox" name="preg_hbp" value="1"> High blood pressure</label>
+  <label><input type="checkbox" name="preg_fevers" value="1"> Fevers</label>
+  <label><input type="checkbox" name="preg_diabetes" value="1"> Diabetes</label>
+  <label><input type="checkbox" name="preg_epilepsy" value="1"> Epilepsy</label>
+  <label><input type="checkbox" name="preg_injuries" value="1"> Injuries</label>
+</div>
+<div class="row"><div class="f"><label>Medications during pregnancy</label><input type="text" name="preg_medications"></div></div>
+<div class="checks">
+  <label><input type="checkbox" name="preg_alcohol" value="1"> Drank alcohol</label>
+  <label><input type="checkbox" name="preg_smoked" value="1"> Smoked cigarettes</label>
+  <label><input type="checkbox" name="preg_drugs" value="1"> Used recreational drugs</label>
+</div>
+<div class="subsec">5. Delivery</div>
+<div class="checks">
+  <label><input type="radio" name="delivery_term" value="Full term"> Full term</label>
+  <label><input type="radio" name="delivery_term" value="Premature"> Premature</label>
+  <div class="f" style="min-width:180px"><label>Weeks gestation (if premature)</label><input type="text" name="delivery_weeks"></div>
+</div>
+<div class="checks">
+  <label><input type="radio" name="delivery_type" value="Vaginal"> Vaginal</label>
+  <label><input type="radio" name="delivery_type" value="Cesarean"> Cesarean</label>
+</div>
+<div class="row">
+  <div class="f"><label>6. Birth weight – lbs</label><input type="text" name="birth_weight_lbs"></div>
+  <div class="f"><label>Birth weight – oz</label><input type="text" name="birth_weight_oz"></div>
+</div>
+<div class="subsec">7. Condition at Birth</div>
+<div class="checks">
+  <label><input type="radio" name="birth_condition" value="OK"> OK</label>
+  <label><input type="radio" name="birth_condition" value="Problems"> Problems</label>
+</div>
+<div class="checks">
+  <label><input type="checkbox" name="bc_jaundice" value="1"> Jaundice</label>
+  <label><input type="checkbox" name="bc_infection" value="1"> Had infection</label>
+  <label><input type="checkbox" name="bc_breathing" value="1"> Trouble breathing</label>
+  <label><input type="checkbox" name="bc_sucking" value="1"> Trouble sucking</label>
+  <label><input type="checkbox" name="bc_defects" value="1"> Birth defects</label>
+  <label><input type="checkbox" name="bc_injuries" value="1"> Birth injuries</label>
+  <label><input type="checkbox" name="bc_surgery" value="1"> Needed surgery</label>
+  <label><input type="checkbox" name="bc_icu" value="1"> Needed intensive care</label>
+  <label><input type="checkbox" name="bc_hospital5" value="1"> In hospital &gt;5 days</label>
+  <label><input type="checkbox" name="bc_anemic" value="1"> Anemic</label>
+</div>
+<div class="row"><div class="f full"><label>Other birth problems</label><input type="text" name="bc_other"></div></div>
+
+<!-- DEVELOPMENTAL HISTORY -->
+<div class="sec-title">Developmental History</div>
+<div class="subsec">1. Temperament (check all that apply)</div>
+<div class="checks">
+  <label><input type="checkbox" name="temp_cuddly" value="1"> Cuddly</label>
+  <label><input type="checkbox" name="temp_fussy" value="1"> Fussy</label>
+  <label><input type="checkbox" name="temp_social" value="1"> Social</label>
+  <label><input type="checkbox" name="temp_quiet" value="1"> Quiet</label>
+  <label><input type="checkbox" name="temp_diffsoothe" value="1"> Difficult to soothe</label>
+  <label><input type="checkbox" name="temp_slowadjust" value="1"> Slow to adjust to change</label>
+</div>
+<div class="subsec">2. Motor Milestones</div>
+<div class="row">
+  <div class="f"><label>Age sat alone</label><input type="text" name="motor_sat_alone"></div>
+  <div class="f"><label>Age crawled</label><input type="text" name="motor_crawled"></div>
+  <div class="f"><label>Age walked alone</label><input type="text" name="motor_walked"></div>
+</div>
+<div class="subsec">3. Language Milestones</div>
+<div class="row">
+  <div class="f"><label>Age spoke first word</label><input type="text" name="lang_first_word"></div>
+  <div class="f"><label>Age put 2 words together</label><input type="text" name="lang_two_words"></div>
+  <div class="f"><label>Age put 3 words together</label><input type="text" name="lang_three_words"></div>
+</div>
+<div class="subsec">4. Toilet Training</div>
+<div class="row">
+  <div class="f"><label>Age training initiated – Bowel</label><input type="text" name="toilet_init_bowel"></div>
+  <div class="f"><label>Age training initiated – Bladder</label><input type="text" name="toilet_init_bladder"></div>
+</div>
+<div class="row">
+  <div class="f"><label>Age training completed – Bowel</label><input type="text" name="toilet_comp_bowel"></div>
+  <div class="f"><label>Age training completed – Bladder</label><input type="text" name="toilet_comp_bladder"></div>
+</div>
+<div class="yn"><span class="yn-q">5. Eating difficulties?</span><div class="yn-opts"><label><input type="radio" name="eating_diff" value="No"> No</label><label><input type="radio" name="eating_diff" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="eating_diff_detail" placeholder="If yes, describe…"></div></div>
+<div class="yn"><span class="yn-q">6. Sleeping difficulties?</span><div class="yn-opts"><label><input type="radio" name="sleeping_diff" value="No"> No</label><label><input type="radio" name="sleeping_diff" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sleeping_diff_detail" placeholder="If yes, describe…"></div></div>
+<div class="yn"><span class="yn-q">7. Problems with separation from parent(s)?</span><div class="yn-opts"><label><input type="radio" name="separation_diff" value="No"> No</label><label><input type="radio" name="separation_diff" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="separation_diff_detail" placeholder="If yes, describe…"></div></div>
+<div class="yn"><span class="yn-q">8. Behavior problems?</span><div class="yn-opts"><label><input type="radio" name="behavior_diff" value="No"> No</label><label><input type="radio" name="behavior_diff" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="behavior_diff_detail" placeholder="If yes, describe…"></div></div>
+<div class="yn">
+  <span class="yn-q">9. Did your child receive Birth-To-Three Services?</span>
+  <div class="yn-opts">
+    <label><input type="radio" name="b23_services" value="No"> No</label>
+    <label><input type="radio" name="b23_services" value="Yes"> Yes</label>
+    <label><input type="checkbox" name="b23_ot" value="OT"> OT</label>
+    <label><input type="checkbox" name="b23_pt" value="PT"> PT</label>
+    <label><input type="checkbox" name="b23_speech" value="Speech"> Speech</label>
+  </div>
+</div>
+
+<!-- MEDICAL -->
+<div class="sec-title">Medical / Health</div>
+<div class="row">
+  <div class="f w2"><label>1. Physician Name</label><input type="text" name="physician_name"></div>
+  <div class="f"><label>Phone Number</label><input type="tel" name="physician_phone"></div>
+</div>
+<div class="row"><div class="f full"><label>Physician Address</label><input type="text" name="physician_address"></div></div>
+<div class="yn"><span class="yn-q">2. Is your pediatrician aware of this referral?</span><div class="yn-opts"><label><input type="radio" name="ped_aware" value="No"> No</label><label><input type="radio" name="ped_aware" value="Yes"> Yes</label></div></div>
+<div class="row">
+  <div class="f"><label>3. Vision checked (date)</label><input type="text" name="vision_date"></div>
+  <div class="f w2"><label>Vision problems</label><input type="text" name="vision_problems"></div>
+</div>
+<div class="row">
+  <div class="f"><label>4. Hearing checked (date)</label><input type="text" name="hearing_date"></div>
+  <div class="f w2"><label>Hearing problems</label><input type="text" name="hearing_problems"></div>
+</div>
+<div class="subsec">5. Serious Illnesses / Injuries / Hospitalizations / Surgeries</div>
+<table>
+  <thead><tr><th style="width:110px">Date</th><th>Incident (explain)</th></tr></thead>
+  <tbody>
+    <tr><td><input type="text" name="illness1_date" placeholder="MM/YYYY"></td><td><input type="text" name="illness1_detail"></td></tr>
+    <tr><td><input type="text" name="illness2_date" placeholder="MM/YYYY"></td><td><input type="text" name="illness2_detail"></td></tr>
+    <tr><td><input type="text" name="illness3_date" placeholder="MM/YYYY"></td><td><input type="text" name="illness3_detail"></td></tr>
+    <tr><td><input type="text" name="illness4_date" placeholder="MM/YYYY"></td><td><input type="text" name="illness4_detail"></td></tr>
+  </tbody>
+</table>
+<div class="subsec">6. Medications (current and past)</div>
+<table>
+  <thead><tr><th>Type / Name</th><th>Dose</th><th>Start Date</th><th>End Date</th></tr></thead>
+  <tbody>
+    <tr><td><input type="text" name="med1_type"></td><td><input type="text" name="med1_dose"></td><td><input type="text" name="med1_start"></td><td><input type="text" name="med1_end"></td></tr>
+    <tr><td><input type="text" name="med2_type"></td><td><input type="text" name="med2_dose"></td><td><input type="text" name="med2_start"></td><td><input type="text" name="med2_end"></td></tr>
+    <tr><td><input type="text" name="med3_type"></td><td><input type="text" name="med3_dose"></td><td><input type="text" name="med3_start"></td><td><input type="text" name="med3_end"></td></tr>
+    <tr><td><input type="text" name="med4_type"></td><td><input type="text" name="med4_dose"></td><td><input type="text" name="med4_start"></td><td><input type="text" name="med4_end"></td></tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="f w2"><label>7. Prescribing Physician Full Name</label><input type="text" name="prescriber_name"></div>
+  <div class="f"><label>Phone Number</label><input type="tel" name="prescriber_phone"></div>
+</div>
+<div class="subsec">8. History of Conditions</div>
+<table>
+  <thead><tr><th>Condition</th><th style="width:140px">Yes / No</th><th>Additional Information</th></tr></thead>
+  <tbody>
+    <tr><td>Febrile seizure</td><td><div class="fh-yn"><label><input type="radio" name="cond_febrile" value="Yes"> Yes</label><label><input type="radio" name="cond_febrile" value="No"> No</label></div></td><td><input type="text" name="cond_febrile_info"></td></tr>
+    <tr><td>Epilepsy</td><td><div class="fh-yn"><label><input type="radio" name="cond_epilepsy" value="Yes"> Yes</label><label><input type="radio" name="cond_epilepsy" value="No"> No</label></div></td><td><input type="text" name="cond_epilepsy_info"></td></tr>
+    <tr><td>Lead poisoning / toxic ingestion</td><td><div class="fh-yn"><label><input type="radio" name="cond_lead" value="Yes"> Yes</label><label><input type="radio" name="cond_lead" value="No"> No</label></div></td><td><input type="text" name="cond_lead_info"></td></tr>
+    <tr><td>Asthma or allergies</td><td><div class="fh-yn"><label><input type="radio" name="cond_asthma" value="Yes"> Yes</label><label><input type="radio" name="cond_asthma" value="No"> No</label></div></td><td><input type="text" name="cond_asthma_info"></td></tr>
+    <tr><td>Head injury</td><td><div class="fh-yn"><label><input type="radio" name="cond_headinj" value="Yes"> Yes</label><label><input type="radio" name="cond_headinj" value="No"> No</label></div></td><td><input type="text" name="cond_headinj_info"></td></tr>
+    <tr><td>Loss of consciousness</td><td><div class="fh-yn"><label><input type="radio" name="cond_loc" value="Yes"> Yes</label><label><input type="radio" name="cond_loc" value="No"> No</label></div></td><td><input type="text" name="cond_loc_info"></td></tr>
+    <tr><td>Abdominal pains / vomiting<br><small style="color:#666">When do they occur?</small></td><td><div class="fh-yn"><label><input type="radio" name="cond_abdom" value="Yes"> Yes</label><label><input type="radio" name="cond_abdom" value="No"> No</label></div></td><td><input type="text" name="cond_abdom_info" placeholder="When?"></td></tr>
+    <tr><td>Headaches<br><small style="color:#666">When do they occur?</small></td><td><div class="fh-yn"><label><input type="radio" name="cond_headaches" value="Yes"> Yes</label><label><input type="radio" name="cond_headaches" value="No"> No</label></div></td><td><input type="text" name="cond_headaches_info" placeholder="When?"></td></tr>
+    <tr><td>Frequent ear infections</td><td><div class="fh-yn"><label><input type="radio" name="cond_ear" value="Yes"> Yes</label><label><input type="radio" name="cond_ear" value="No"> No</label></div></td><td><input type="text" name="cond_ear_info"></td></tr>
+    <tr><td>Sleeping difficulties</td><td><div class="fh-yn"><label><input type="radio" name="cond_sleep" value="Yes"> Yes</label><label><input type="radio" name="cond_sleep" value="No"> No</label></div></td><td><input type="text" name="cond_sleep_info"></td></tr>
+    <tr><td>Eating difficulties</td><td><div class="fh-yn"><label><input type="radio" name="cond_eating" value="Yes"> Yes</label><label><input type="radio" name="cond_eating" value="No"> No</label></div></td><td><input type="text" name="cond_eating_info"></td></tr>
+    <tr><td>Tics / twitching</td><td><div class="fh-yn"><label><input type="radio" name="cond_tics" value="Yes"> Yes</label><label><input type="radio" name="cond_tics" value="No"> No</label></div></td><td><input type="text" name="cond_tics_info"></td></tr>
+  </tbody>
+</table>
+
+<!-- EDUCATION -->
+<div class="sec-title">Education</div>
+<div class="row"><div class="f"><label>1. Days absent in past year</label><input type="text" name="days_absent"></div></div>
+<div class="yn">
+  <span class="yn-q">2. Skipped or repeated a grade?</span>
+  <div class="yn-opts"><label><input type="radio" name="grade_skip_repeat" value="No"> No</label><label><input type="radio" name="grade_skip_repeat" value="Yes"> Yes</label></div>
+  <div class="yn-detail"><input type="text" name="grade_skip_repeat_detail" placeholder="If yes, which grade?"></div>
+</div>
+<div class="subsec">3. Teacher reported problems in (check all that apply)</div>
+<div class="checks">
+  <label><input type="checkbox" name="teacher_reading" value="1"> Reading</label>
+  <label><input type="checkbox" name="teacher_spelling" value="1"> Spelling</label>
+  <label><input type="checkbox" name="teacher_math" value="1"> Math</label>
+  <label><input type="checkbox" name="teacher_writing" value="1"> Writing</label>
+  <label><input type="checkbox" name="teacher_behavior" value="1"> Behavior</label>
+  <label><input type="checkbox" name="teacher_attention" value="1"> Attention / Concentration</label>
+  <label><input type="checkbox" name="teacher_social" value="1"> Social adjustment</label>
+</div>
+<div class="f full" style="margin-bottom:12px"><label>Please explain</label><textarea name="teacher_problems_detail" rows="2"></textarea></div>
+<div class="subsec">4. Academic Problems by Grade</div>
+<div class="grade-grid">
+  <div class="glabel">Nursery</div><div class="ginput"><input type="text" name="grade_nursery"></div>
+  <div class="glabel">Kindergarten</div><div class="ginput"><input type="text" name="grade_kinder"></div>
+  <div class="glabel">1st Grade</div><div class="ginput"><input type="text" name="grade_1"></div>
+  <div class="glabel">2nd Grade</div><div class="ginput"><input type="text" name="grade_2"></div>
+  <div class="glabel">3rd Grade</div><div class="ginput"><input type="text" name="grade_3"></div>
+  <div class="glabel">4th Grade</div><div class="ginput"><input type="text" name="grade_4"></div>
+  <div class="glabel">5th Grade</div><div class="ginput"><input type="text" name="grade_5"></div>
+  <div class="glabel">6th Grade</div><div class="ginput"><input type="text" name="grade_6"></div>
+  <div class="glabel">7th Grade</div><div class="ginput"><input type="text" name="grade_7"></div>
+  <div class="glabel">8th Grade</div><div class="ginput"><input type="text" name="grade_8"></div>
+  <div class="glabel">9th Grade</div><div class="ginput"><input type="text" name="grade_9"></div>
+  <div class="glabel">10th Grade</div><div class="ginput"><input type="text" name="grade_10"></div>
+  <div class="glabel">11th Grade</div><div class="ginput"><input type="text" name="grade_11"></div>
+  <div class="glabel">12th Grade</div><div class="ginput"><input type="text" name="grade_12"></div>
+</div>
+
+<!-- SOCIAL -->
+<div class="sec-title">Social</div>
+<div class="yn"><span class="yn-q">My child plays with children his/her own age.</span><div class="yn-opts"><label><input type="radio" name="social_peers" value="No"> No</label><label><input type="radio" name="social_peers" value="Yes"> Yes</label></div></div>
+<div class="yn"><span class="yn-q">My child engages in normal imaginative or pretend play.</span><div class="yn-opts"><label><input type="radio" name="social_pretend" value="No"> No</label><label><input type="radio" name="social_pretend" value="Yes"> Yes</label></div></div>
+<div class="yn"><span class="yn-q">My child's play generally revolves around one particular theme with minimal variation.</span><div class="yn-opts"><label><input type="radio" name="social_theme" value="No"> No</label><label><input type="radio" name="social_theme" value="Yes"> Yes</label></div></div>
+<div class="yn"><span class="yn-q">My child is willing to let others join in games and play situations.</span><div class="yn-opts"><label><input type="radio" name="social_join" value="No"> No</label><label><input type="radio" name="social_join" value="Yes"> Yes</label></div></div>
+<div class="yn"><span class="yn-q">My child engages in parallel play (plays besides another but does not engage them).</span><div class="yn-opts"><label><input type="radio" name="social_parallel" value="No"> No</label><label><input type="radio" name="social_parallel" value="Yes"> Yes</label></div></div>
+<div class="yn"><span class="yn-q">My child engages in cooperative play.</span><div class="yn-opts"><label><input type="radio" name="social_cooperative" value="No"> No</label><label><input type="radio" name="social_cooperative" value="Yes"> Yes</label></div></div>
+<div class="yn"><span class="yn-q">My child gets along well with other children.</span><div class="yn-opts"><label><input type="radio" name="social_getalong" value="No"> No</label><label><input type="radio" name="social_getalong" value="Yes"> Yes</label></div></div>
+
+<!-- BEHAVIOR -->
+<div class="sec-title">Behavior</div>
+<p class="note">Please mark any boxes that describe your child:</p>
+<div class="beh-grid">
+  <label><input type="checkbox" name="beh_poor_eye_contact" value="1"> Poor eye contact</label>
+  <label><input type="checkbox" name="beh_unusual_vocal" value="1"> Unusual vocal patterns</label>
+  <label><input type="checkbox" name="beh_impulsive" value="1"> Impulsive</label>
+  <label><input type="checkbox" name="beh_sensitive" value="1"> Sensitive</label>
+  <label><input type="checkbox" name="beh_sad" value="1"> Sad</label>
+  <label><input type="checkbox" name="beh_tense" value="1"> Tense</label>
+  <label><input type="checkbox" name="beh_easily_frustrated" value="1"> Easily frustrated</label>
+  <label><input type="checkbox" name="beh_shy" value="1"> Shy</label>
+  <label><input type="checkbox" name="beh_temper_tantrum" value="1"> Temper tantrum</label>
+  <label><input type="checkbox" name="beh_alcohol_drugs" value="1"> Uses alcohol/drugs</label>
+  <label><input type="checkbox" name="beh_head_bangs" value="1"> Head bangs</label>
+  <label><input type="checkbox" name="beh_happy" value="1"> Happy</label>
+  <label><input type="checkbox" name="beh_distractible" value="1"> Distractible</label>
+  <label><input type="checkbox" name="beh_friendly" value="1"> Friendly</label>
+  <label><input type="checkbox" name="beh_immature" value="1"> Immature</label>
+  <label><input type="checkbox" name="beh_unhappy" value="1"> Unhappy</label>
+  <label><input type="checkbox" name="beh_tearful" value="1"> Often tearful</label>
+  <label><input type="checkbox" name="beh_disorganized" value="1"> Disorganized</label>
+  <label><input type="checkbox" name="beh_self_injurious" value="1"> Self-injurious behaviors</label>
+  <label><input type="checkbox" name="beh_police" value="1"> Trouble with the police</label>
+  <label><input type="checkbox" name="beh_aggressive" value="1"> Aggressive</label>
+  <label><input type="checkbox" name="beh_inattentive" value="1"> Inattentive</label>
+  <label><input type="checkbox" name="beh_nail_biting" value="1"> Nail biting</label>
+  <label><input type="checkbox" name="beh_helpful" value="1"> Helpful</label>
+  <label><input type="checkbox" name="beh_dependent" value="1"> Dependent</label>
+  <label><input type="checkbox" name="beh_repetitive" value="1"> Repetitive/stereotyped movements</label>
+  <label><input type="checkbox" name="beh_nightmares" value="1"> Nightmares</label>
+</div>
+
+<!-- SENSORY-MOTOR -->
+<div class="sec-title">Sensory-Motor</div>
+<div class="subsec">1. Hand Preference</div>
+<div class="checks">
+  <label><input type="radio" name="hand_pref" value="Right"> Right</label>
+  <label><input type="radio" name="hand_pref" value="Left"> Left</label>
+  <label><input type="radio" name="hand_pref" value="None"> None</label>
+</div>
+<div class="subsec">2. Does your child:</div>
+<div class="yn"><span class="yn-q">Dislike certain food textures</span><div class="yn-opts"><label><input type="radio" name="sm_food_tex" value="No"> No</label><label><input type="radio" name="sm_food_tex" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sm_food_tex_detail" placeholder="Describe…"></div></div>
+<div class="yn"><span class="yn-q">Chew on non-food items (shirt, pencil, etc.)</span><div class="yn-opts"><label><input type="radio" name="sm_chew" value="No"> No</label><label><input type="radio" name="sm_chew" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sm_chew_detail" placeholder="Describe…"></div></div>
+<div class="yn"><span class="yn-q">Dislike touching certain textures (paste, etc.)</span><div class="yn-opts"><label><input type="radio" name="sm_touch_tex" value="No"> No</label><label><input type="radio" name="sm_touch_tex" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sm_touch_tex_detail" placeholder="Describe…"></div></div>
+<div class="yn"><span class="yn-q">Dislike getting dirty</span><div class="yn-opts"><label><input type="radio" name="sm_dirty" value="No"> No</label><label><input type="radio" name="sm_dirty" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sm_dirty_detail" placeholder="Describe…"></div></div>
+<div class="yn"><span class="yn-q">Dislike being touched</span><div class="yn-opts"><label><input type="radio" name="sm_touched" value="No"> No</label><label><input type="radio" name="sm_touched" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sm_touched_detail" placeholder="Describe…"></div></div>
+<div class="yn"><span class="yn-q">Appear clumsy or off-balance</span><div class="yn-opts"><label><input type="radio" name="sm_clumsy" value="No"> No</label><label><input type="radio" name="sm_clumsy" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sm_clumsy_detail" placeholder="Describe…"></div></div>
+<div class="yn"><span class="yn-q">Have trouble with eye-hand coordination</span><div class="yn-opts"><label><input type="radio" name="sm_eyehand" value="No"> No</label><label><input type="radio" name="sm_eyehand" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sm_eyehand_detail" placeholder="Describe…"></div></div>
+<div class="yn"><span class="yn-q">Have an unusual posture / gait</span><div class="yn-opts"><label><input type="radio" name="sm_posture" value="No"> No</label><label><input type="radio" name="sm_posture" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sm_posture_detail" placeholder="Describe…"></div></div>
+<div class="yn"><span class="yn-q">Have difficulty with handwriting or drawing</span><div class="yn-opts"><label><input type="radio" name="sm_handwriting" value="No"> No</label><label><input type="radio" name="sm_handwriting" value="Yes"> Yes</label></div><div class="yn-detail"><input type="text" name="sm_handwriting_detail" placeholder="Describe…"></div></div>
+
+<!-- FAMILY INFORMATION -->
+<div class="sec-title">Family Information</div>
+<div class="row">
+  <div class="f"><label>1. Overall health – Parent 1</label><input type="text" name="parent1_health"></div>
+  <div class="f"><label>Overall health – Parent 2</label><input type="text" name="parent2_health"></div>
+</div>
+<div class="subsec">2. Significant events in the previous 2 years</div>
+<div class="row"><div class="f full"><label>Deaths</label><input type="text" name="event_deaths"></div></div>
+<div class="row"><div class="f full"><label>Move</label><input type="text" name="event_move"></div></div>
+<div class="row"><div class="f full"><label>Job transfer</label><input type="text" name="event_job_transfer"></div></div>
+<div class="row"><div class="f full"><label>Accidents / serious illness</label><input type="text" name="event_accidents"></div></div>
+<div class="subsec">3. Family History — please note relationship to child for any Yes</div>
+<p class="note">Include child's parents, grandparents, siblings, aunts, uncles, and cousins.</p>
+<table>
+  <thead><tr><th>Is there any history of:</th><th style="width:180px">Biological Mother's Side</th><th style="width:180px">Biological Father's Side</th></tr></thead>
+  <tbody>
+    <tr><td>Learning problems?</td><td><div class="fh-yn"><label><input type="radio" name="fh_learning_m" value="Yes"> Yes</label><label><input type="radio" name="fh_learning_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_learning_f" value="Yes"> Yes</label><label><input type="radio" name="fh_learning_f" value="No"> No</label></div></td></tr>
+    <tr><td>Reading problems?</td><td><div class="fh-yn"><label><input type="radio" name="fh_reading_m" value="Yes"> Yes</label><label><input type="radio" name="fh_reading_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_reading_f" value="Yes"> Yes</label><label><input type="radio" name="fh_reading_f" value="No"> No</label></div></td></tr>
+    <tr><td>Attention problems?</td><td><div class="fh-yn"><label><input type="radio" name="fh_attention_m" value="Yes"> Yes</label><label><input type="radio" name="fh_attention_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_attention_f" value="Yes"> Yes</label><label><input type="radio" name="fh_attention_f" value="No"> No</label></div></td></tr>
+    <tr><td>Stuttering?</td><td><div class="fh-yn"><label><input type="radio" name="fh_stutter_m" value="Yes"> Yes</label><label><input type="radio" name="fh_stutter_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_stutter_f" value="Yes"> Yes</label><label><input type="radio" name="fh_stutter_f" value="No"> No</label></div></td></tr>
+    <tr><td>Epilepsy or seizures?</td><td><div class="fh-yn"><label><input type="radio" name="fh_epilepsy_m" value="Yes"> Yes</label><label><input type="radio" name="fh_epilepsy_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_epilepsy_f" value="Yes"> Yes</label><label><input type="radio" name="fh_epilepsy_f" value="No"> No</label></div></td></tr>
+    <tr><td>Other neurologic disorders?</td><td><div class="fh-yn"><label><input type="radio" name="fh_neuro_m" value="Yes"> Yes</label><label><input type="radio" name="fh_neuro_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_neuro_f" value="Yes"> Yes</label><label><input type="radio" name="fh_neuro_f" value="No"> No</label></div></td></tr>
+    <tr><td>Diabetes?</td><td><div class="fh-yn"><label><input type="radio" name="fh_diabetes_m" value="Yes"> Yes</label><label><input type="radio" name="fh_diabetes_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_diabetes_f" value="Yes"> Yes</label><label><input type="radio" name="fh_diabetes_f" value="No"> No</label></div></td></tr>
+    <tr><td>Genetic or inherited disorders?</td><td><div class="fh-yn"><label><input type="radio" name="fh_genetic_m" value="Yes"> Yes</label><label><input type="radio" name="fh_genetic_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_genetic_f" value="Yes"> Yes</label><label><input type="radio" name="fh_genetic_f" value="No"> No</label></div></td></tr>
+    <tr><td>Other serious illnesses / health problems?</td><td><div class="fh-yn"><label><input type="radio" name="fh_illness_m" value="Yes"> Yes</label><label><input type="radio" name="fh_illness_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_illness_f" value="Yes"> Yes</label><label><input type="radio" name="fh_illness_f" value="No"> No</label></div></td></tr>
+    <tr><td>Emotional disorders?</td><td><div class="fh-yn"><label><input type="radio" name="fh_emotional_m" value="Yes"> Yes</label><label><input type="radio" name="fh_emotional_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_emotional_f" value="Yes"> Yes</label><label><input type="radio" name="fh_emotional_f" value="No"> No</label></div></td></tr>
+    <tr><td>Received / is receiving psychiatric treatment?</td><td><div class="fh-yn"><label><input type="radio" name="fh_psych_tx_m" value="Yes"> Yes</label><label><input type="radio" name="fh_psych_tx_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_psych_tx_f" value="Yes"> Yes</label><label><input type="radio" name="fh_psych_tx_f" value="No"> No</label></div></td></tr>
+    <tr><td>Hospitalized for an emotional problem?</td><td><div class="fh-yn"><label><input type="radio" name="fh_hosp_psych_m" value="Yes"> Yes</label><label><input type="radio" name="fh_hosp_psych_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_hosp_psych_f" value="Yes"> Yes</label><label><input type="radio" name="fh_hosp_psych_f" value="No"> No</label></div></td></tr>
+    <tr><td>Drug / alcohol addiction or abuse?</td><td><div class="fh-yn"><label><input type="radio" name="fh_substance_m" value="Yes"> Yes</label><label><input type="radio" name="fh_substance_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_substance_f" value="Yes"> Yes</label><label><input type="radio" name="fh_substance_f" value="No"> No</label></div></td></tr>
+    <tr><td>Attempted / committed suicide?</td><td><div class="fh-yn"><label><input type="radio" name="fh_suicide_m" value="Yes"> Yes</label><label><input type="radio" name="fh_suicide_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_suicide_f" value="Yes"> Yes</label><label><input type="radio" name="fh_suicide_f" value="No"> No</label></div></td></tr>
+    <tr><td>Violent behavior?</td><td><div class="fh-yn"><label><input type="radio" name="fh_violent_m" value="Yes"> Yes</label><label><input type="radio" name="fh_violent_m" value="No"> No</label></div></td><td><div class="fh-yn"><label><input type="radio" name="fh_violent_f" value="Yes"> Yes</label><label><input type="radio" name="fh_violent_f" value="No"> No</label></div></td></tr>
+  </tbody>
+</table>
+
+<!-- COMPLETION -->
+<div class="completion">
+  <div>
+    <div class="comp-field"><label>Completed By</label><input type="text" name="completed_by_1"></div>
+    <div class="comp-field"><label>Relationship to Child</label><input type="text" name="completed_by_1_rel"></div>
+    <div class="comp-field"><label>Date</label><input type="date" name="completed_by_1_date"></div>
+  </div>
+  <div>
+    <div class="comp-field"><label>Completed By</label><input type="text" name="completed_by_2"></div>
+    <div class="comp-field"><label>Relationship to Child</label><input type="text" name="completed_by_2_rel"></div>
+    <div class="comp-field"><label>Date</label><input type="date" name="completed_by_2_date"></div>
+  </div>
+</div>
+
+<!-- SUBMIT -->
+<div class="submit-wrap">
+  <button type="submit" class="submit-btn">Submit Form</button>
+  <div id="msg"></div>
+</div>
+
+</form>
+</div>
+</div>
+
+<script>
+document.getElementById('form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const msg = document.getElementById('msg');
+  msg.textContent = 'Submitting\u2026';
+  msg.className = '';
+
+  const data = {};
+  this.querySelectorAll('input, select, textarea').forEach(el => {
+    if (!el.name) return;
+    if (el.type === 'checkbox') {
+      data[el.name] = el.checked ? el.value : '0';
+    } else if (el.type === 'radio') {
+      if (el.checked) data[el.name] = el.value;
+      else if (!(el.name in data)) data[el.name] = '';
+    } else {
+      data[el.name] = el.value;
+    }
+  });
+
+  const POWER_AUTOMATE_URL = 'https://default7c415c58538e4a4a838286289b4e67.98.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b80412f856da499c873010c2070026d4/triggers/manual/paths/invoke?api-version=1';
+
+  try {
+    const resp = await fetch(POWER_AUTOMATE_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    if (resp.ok) {
+      msg.textContent = 'Form submitted successfully. Thank you!';
+      msg.className = 'ok';
+      this.reset();
+    } else {
+      throw new Error('Server returned ' + resp.status);
+    }
+  } catch(err) {
+    msg.textContent = 'Submission failed: ' + err.message;
+    msg.className = 'err';
+  }
+});
+</script>
+</body>
+</html>
