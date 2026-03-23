@@ -568,18 +568,22 @@ document.getElementById('form').addEventListener('submit', async function(e) {
   const POWER_AUTOMATE_URL = 'https://default7c415c58538e4a4a838286289b4e67.98.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b80412f856da499c873010c2070026d4/triggers/manual/paths/invoke?api-version=1';
 const SECRET_KEY = 'KulasNeuro2024!peds';
   
-  try {
-    const resp = await fetch(POWER_AUTOMATE_URL, {
-  method: 'POST',
-  headers: {'Content-Type': 'application/json'},
-  body: JSON.stringify(data)body: JSON.stringify({...data, _secret_key: 'KulasNeuro2024!peds'})
+ try {
+const resp = await fetch(POWER_AUTOMATE_URL, {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({...data, _secret_key: 'KulasNeuro2024!peds'})
 });
 if (resp.ok) {
-  msg.textContent = 'Form submitted successfully. Thank you!';
-  msg.className = 'ok';
-  this.reset();
+msg.textContent = 'Form submitted successfully. Thank you!';
+msg.className = 'ok';
+this.reset();
 } else {
-  throw new Error('Server returned ' + resp.status);
+throw new Error('Server returned ' + resp.status);
+}
+} catch (e) {
+msg.textContent = 'Error: ' + e.message + '. Please call the practice.';
+msg.className = 'err';
 }
 });
 </script>
