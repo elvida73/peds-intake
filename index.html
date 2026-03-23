@@ -565,8 +565,8 @@ document.getElementById('form').addEventListener('submit', async function(e) {
     }
   });
 
-  const POWER_AUTOMATE_URL = 'https://default7c415c58538e4a4a838286289b4e67.98.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b80412f856da499c873010c2070026d4/triggers/manual/paths/invoke?api-version=1';
-const SECRET_KEY = 'KulasNeuro2024!peds';
+const POWER_AUTOMATE_URL = 'https://default7c415c58538e4a4a838286289b4e67.98.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b80412f856da499c873010c2070026d4/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=gf8bYxjlvxtDUK4bhadosMsxsDa5k0IXH8Y-fBLRBCA';
+  const SECRET_KEY = 'KulasNeuro2024!peds';
   
  try {
 const resp = await fetch(POWER_AUTOMATE_URL, {
