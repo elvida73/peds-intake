@@ -570,6 +570,7 @@ document.getElementById('form').addEventListener('submit', async function(e) {
   const msg = document.getElementById('msg');
   msg.textContent = 'Submitting\u2026';
   msg.className = '';
+  msg.style.display = 'block';
 
   const data = {};
   this.querySelectorAll('input, select, textarea').forEach(el => {
