@@ -110,6 +110,12 @@ table td input:focus{outline:1px solid #1a2744;border-radius:2px}
   <button type="button" id="btn-load">⬆ Load from file</button>
   <input type="file" id="load-input" accept=".json" style="display:none">
 </div>
+<!-- SAVE CONFIRMATION TOAST -->
+<div id="save-toast" style="display:none;margin:6px 30px 0;padding:8px 14px;background:#e6f4ea;border:1px solid #7dba8f;border-radius:4px;font-size:12.5px;color:#1a4a28;line-height:1.6">
+  <strong>File saved to your Downloads folder.</strong><br>
+  <span id="toast-filename" style="font-family:monospace;font-size:12px"></span><br>
+  <span style="color:#555">To resume later: click <em>Load from file</em> and select this file from your Downloads folder.</span>
+</div>
 
 <div class="body">
 <form id="form">
@@ -652,11 +658,19 @@ document.getElementById('btn-save').addEventListener('click', () => {
   const payload = { savedAt: new Date().toISOString(), fields: collectFormData(form) };
   // Also push to localStorage so the two methods stay in sync
   localStorage.setItem(DRAFT_KEY, JSON.stringify(payload));
+  const filename = 'intake_draft_' + new Date().toISOString().slice(0,10) + '.json';
   const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'intake_draft_' + new Date().toISOString().slice(0,10) + '.json';
+  a.download = filename;
   a.click();
+  // Show toast with filename
+  document.getElementById('toast-filename', ).textContent = filename;
+  const toast = document.getElementById('save-toast');
+  toast.style.display = 'block';
+  // Auto-hide toast after 12 seconds
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => { toast.style.display = 'none'; }, 12000);
   draftTime.textContent = 'File downloaded & auto-save updated — ' + fmtTime(payload.savedAt);
   draftBanner.style.display = 'flex';
 });
