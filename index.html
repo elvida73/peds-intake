@@ -71,44 +71,20 @@ table td input:focus{outline:1px solid #1a2744;border-radius:2px}
 .subsec{font-size:12px;font-weight:700;color:#1a2744;margin:10px 0 6px;text-transform:uppercase;letter-spacing:.04em}
 .tdlabel{background:#fafbfd;font-weight:700;font-size:12.5px;padding:5px 8px!important}
 @media(max-width:600px){.hdr{grid-template-columns:1fr;text-align:center}.hdr-right{text-align:center}.completion{grid-template-columns:1fr}}
-.submit-btn {
-  background: #1a2744;
-  color: #fff;
-  border: none;
-  padding: 10px 28px;
-  font-size: 11pt;
-  font-family: sans-serif;
-  font-weight: 600;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.submit-btn:hover { background: #2c4a8c; }
-.submit-btn:disabled { background: #9fa8da; cursor: not-allowed; }
-  .toolbar {
-  width: 900px;
-  margin: 0 auto 10px;
-  display: flex;
-  gap: 10px;
-}
-.btn {
-  padding: 8px 20px;
-  font-size: 10pt;
-  font-family: sans-serif;
-  cursor: pointer;
-  border-radius: 4px;
-  border: 1.5px solid #333;
-  background: #fff;
-  font-weight: 600;
-}
-.btn-print { background: #1a2744; color: #fff; border-color: #1a2744; }
-.btn-print:hover { background: #2c4a8c; }
+/* ── DRAFT SAVE / LOAD CONTROLS ─────────────────────────────── */
+#draft-banner{display:none;align-items:center;gap:10px;flex-wrap:wrap;background:#eef3fb;border:1px solid #b5c9ef;border-radius:4px;padding:8px 14px;margin:14px 30px 0;font-size:12.5px;color:#1a2744}
+#draft-time{flex:1;font-style:italic}
+#draft-banner button{background:#1a2744;color:#fff;border:none;padding:5px 13px;font-size:12px;font-family:Georgia,serif;border-radius:3px;cursor:pointer;white-space:nowrap}
+#draft-banner button:hover{background:#2c4a8c}
+#draft-banner #btn-clear{background:#888}
+#draft-banner #btn-clear:hover{background:#c0392b}
+.save-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 30px 0;font-size:12.5px;color:#555}
+.save-bar span{margin-right:4px;font-weight:700}
+.save-bar button{background:#f0f3fa;border:1px solid #b5c9ef;color:#1a2744;padding:6px 15px;font-size:12.5px;font-family:Georgia,serif;border-radius:3px;cursor:pointer}
+.save-bar button:hover{background:#dce5f5}
 </style>
 </head>
 <body>
-  <div class="toolbar no-print">
-  <button class="btn btn-print" onclick="window.print()">&#128438; Print / Save as PDF</button>
-  <button class="btn" onclick="clearForm()">&#10005; Clear Form</button>
-</div>
 <div class="wrapper">
 
 <div class="hdr">
@@ -117,9 +93,23 @@ table td input:focus{outline:1px solid #1a2744;border-radius:2px}
     <h1>Joseph F. Kulas, Ph.D., ABPP</h1>
     <p>Board Certified Clinical Neuropsychologist<br>Board Certified Subspecialist<br>Pediatric Neuropsychology</p>
   </div>
-  <div class="hdr-right">Phone: (203) 805-8527<br>Fax: (888) 494-0373<br>JosephKulas.PhD@neuropsychologyct.org<br>npsych.us</div>
+  <div class="hdr-right">Phone: (203) 805-8527<br>Fax: (888) 494-0373<br>JosephKulas.PhD@neuropsychologyct.org<br>www.neuropsychologyct.org</div>
 </div>
 <div class="form-title">Developmental History Form</div>
+
+<!-- DRAFT BANNER: shown when a draft exists -->
+<div id="draft-banner">
+  <span id="draft-time"></span>
+  <button type="button" id="btn-clear">Clear draft</button>
+</div>
+
+<!-- SAVE / LOAD BAR -->
+<div class="save-bar">
+  <span>Save your progress:</span>
+  <button type="button" id="btn-save">⬇ Save to file</button>
+  <button type="button" id="btn-load">⬆ Load from file</button>
+  <input type="file" id="load-input" accept=".json" style="display:none">
+</div>
 
 <div class="body">
 <form id="form">
@@ -571,31 +561,23 @@ table td input:focus{outline:1px solid #1a2744;border-radius:2px}
 </div>
 
 <!-- SUBMIT -->
-<div class="no-print" style="margin-top:24pt;padding:16pt;background:#f0f4ff;border:1.5px solid #1a237e;border-radius:6px;font-family:sans-serif;">
- <div style="font-size:9pt;color:#333;margin-bottom:0;">
-    Click the button below to securely submit your form. Your information is transmitted securely and stored in compliance with HIPAA.
-  </div>
-  <div id="msg" style="font-size:13.5px;font-weight:700;"></div>
-  <button type="submit" class="submit-btn">&#10004; Submit Form Securely</button>
-  <div style="font-size:8pt;color:#777;margin-top:8pt;">
-    After submitting, please print a copy for your records using the Print button above.
-  </div>
+<div class="submit-wrap">
+  <button type="submit" class="submit-btn">Submit Form</button>
+  <div id="msg"></div>
 </div>
-  
+
 </form>
 </div>
 </div>
 
 <script>
-document.getElementById('form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const msg = document.getElementById('msg');
-  msg.textContent = 'Submitting\u2026';
-  msg.className = '';
-  msg.style.display = 'block';
+/* ─── DRAFT STORAGE KEY ─────────────────────────────────────── */
+const DRAFT_KEY = 'peds_intake_draft';
 
+/* ─── COLLECT ALL FORM VALUES INTO AN OBJECT ────────────────── */
+function collectFormData(form) {
   const data = {};
-  this.querySelectorAll('input, select, textarea').forEach(el => {
+  form.querySelectorAll('input, select, textarea').forEach(el => {
     if (!el.name) return;
     if (el.type === 'checkbox') {
       data[el.name] = el.checked ? el.value : '0';
@@ -606,27 +588,142 @@ document.getElementById('form').addEventListener('submit', async function(e) {
       data[el.name] = el.value;
     }
   });
+  return data;
+}
 
-const POWER_AUTOMATE_URL = 'https://default7c415c58538e4a4a838286289b4e67.98.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b80412f856da499c873010c2070026d4/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=gf8bYxjlvxtDUK4bhadosMsxsDa5k0IXH8Y-fBLRBCA';
-  const SECRET_KEY = 'KulasNeuro2024!peds';
-  
- try {
-const resp = await fetch(POWER_AUTOMATE_URL, {
-method: 'POST',
-headers: {'Content-Type': 'application/json'},
-body: JSON.stringify({...data, _secret_key: 'KulasNeuro2024!peds'})
+/* ─── RESTORE VALUES FROM A DATA OBJECT INTO THE FORM ───────── */
+function restoreFormData(form, data) {
+  // First pass: text / date / tel / select / textarea
+  form.querySelectorAll('input:not([type=checkbox]):not([type=radio]), select, textarea').forEach(el => {
+    if (el.name && el.name in data) el.value = data[el.name];
+  });
+  // Second pass: checkboxes
+  form.querySelectorAll('input[type=checkbox]').forEach(el => {
+    if (el.name in data) el.checked = (data[el.name] === el.value);
+  });
+  // Third pass: radio buttons
+  form.querySelectorAll('input[type=radio]').forEach(el => {
+    if (el.name in data) el.checked = (data[el.name] === el.value);
+  });
+}
+
+/* ─── FORMAT A TIMESTAMP FOR DISPLAY ────────────────────────── */
+function fmtTime(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString(undefined, {month:'short',day:'numeric',year:'numeric'}) +
+    ' at ' + d.toLocaleTimeString(undefined, {hour:'numeric',minute:'2-digit'});
+}
+
+/* ─── AUTO-SAVE TO localStorage (debounced 2 s) ─────────────── */
+let saveTimer = null;
+const draftBanner = document.getElementById('draft-banner');
+const draftTime   = document.getElementById('draft-time');
+
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    const form = document.getElementById('form');
+    const payload = { savedAt: new Date().toISOString(), fields: collectFormData(form) };
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(payload));
+    draftTime.textContent = 'Auto-saved at ' + fmtTime(payload.savedAt);
+    draftBanner.style.display = 'flex';
+  }, 2000);
+}
+
+/* ─── RESTORE DRAFT ON PAGE LOAD ────────────────────────────── */
+window.addEventListener('DOMContentLoaded', () => {
+  const raw = localStorage.getItem(DRAFT_KEY);
+  if (!raw) return;
+  try {
+    const payload = JSON.parse(raw);
+    restoreFormData(document.getElementById('form'), payload.fields);
+    draftTime.textContent = 'Draft restored — last saved ' + fmtTime(payload.savedAt);
+    draftBanner.style.display = 'flex';
+  } catch(e) { /* corrupt draft — ignore */ }
 });
-if (resp.ok) {
-msg.textContent = 'Form submitted successfully. Thank you!';
-msg.className = 'ok';
-this.reset();
-} else {
-throw new Error('Server returned ' + resp.status);
-}
-} catch (e) {
-msg.textContent = 'Error: ' + e.message + '. Please call the practice.';
-msg.className = 'err';
-}
+
+/* ─── ATTACH AUTO-SAVE LISTENERS ────────────────────────────── */
+document.getElementById('form').addEventListener('input',  scheduleSave);
+document.getElementById('form').addEventListener('change', scheduleSave);
+
+/* ─── MANUAL SAVE: download .json file ─────────────────────── */
+document.getElementById('btn-save').addEventListener('click', () => {
+  const form = document.getElementById('form');
+  const payload = { savedAt: new Date().toISOString(), fields: collectFormData(form) };
+  // Also push to localStorage so the two methods stay in sync
+  localStorage.setItem(DRAFT_KEY, JSON.stringify(payload));
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'intake_draft_' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  draftTime.textContent = 'File downloaded & auto-save updated — ' + fmtTime(payload.savedAt);
+  draftBanner.style.display = 'flex';
+});
+
+/* ─── LOAD: restore from a downloaded .json file ────────────── */
+document.getElementById('btn-load').addEventListener('click', () => {
+  document.getElementById('load-input').click();
+});
+document.getElementById('load-input').addEventListener('change', function() {
+  const file = this.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const payload = JSON.parse(e.target.result);
+      if (!payload.fields) throw new Error('Unrecognized format');
+      restoreFormData(document.getElementById('form'), payload.fields);
+      // Also sync to localStorage
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(payload));
+      draftTime.textContent = 'Draft loaded from file — originally saved ' + fmtTime(payload.savedAt);
+      draftBanner.style.display = 'flex';
+    } catch(err) {
+      alert('Could not load draft file. Please make sure you are using a file previously saved from this form.');
+    }
+  };
+  reader.readAsText(file);
+  this.value = ''; // reset so same file can be reloaded if needed
+});
+
+/* ─── CLEAR DRAFT ────────────────────────────────────────────── */
+document.getElementById('btn-clear').addEventListener('click', () => {
+  if (!confirm('Clear the saved draft? This cannot be undone.')) return;
+  localStorage.removeItem(DRAFT_KEY);
+  draftBanner.style.display = 'none';
+});
+
+/* ─── SUBMIT ─────────────────────────────────────────────────── */
+document.getElementById('form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const msg = document.getElementById('msg');
+  msg.textContent = 'Submitting\u2026';
+  msg.className = '';
+
+  const data = collectFormData(this);
+
+  const POWER_AUTOMATE_URL = 'https://default7c415c58538e4a4a838286289b4e67.98.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b80412f856da499c873010c2070026d4/triggers/manual/paths/invoke?api-version=1';
+
+  try {
+    const resp = await fetch(POWER_AUTOMATE_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    if (resp.ok) {
+      msg.textContent = 'Form submitted successfully. Thank you!';
+      msg.className = 'ok';
+      // Clear the saved draft now that submission succeeded
+      localStorage.removeItem(DRAFT_KEY);
+      draftBanner.style.display = 'none';
+      this.reset();
+    } else {
+      throw new Error('Server returned ' + resp.status);
+    }
+  } catch(err) {
+    msg.textContent = 'Submission failed — please try again or contact the office. (' + err.message + ')';
+    msg.className = 'err';
+  }
 });
 </script>
 </body>
